@@ -1,0 +1,39 @@
+﻿@page
+@model zad7._4.Pages.YearBaseModel
+@{
+     <h1> Baza danych </h1>
+
+    <form method="get">
+
+        <div class="form-group">
+            <label>Szukaj: </label>
+            <input asp-for="user" class="form-control"/>
+
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Szukaj</button>
+            </div>
+        </div>
+    </form>
+
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Rok</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.listDB)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.lastname)</td>
+                    <td>@Html.DisplayFor(modelItem => item.year)</td>
+                </tr>
+            }
+        </tbody>      
+    </table>
+}

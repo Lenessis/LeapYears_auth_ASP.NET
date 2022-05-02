@@ -1,0 +1,32 @@
+﻿@page
+@model zad7._4.Pages.SavedInSessionModel
+@{
+
+    <h1>Zadanie - rok przestępny</h1>
+
+    @if (Model.yearsList != null)
+    {
+        <p>
+
+            @foreach (var item in Model.yearsList)
+            {
+                <span>
+                    @item.name, @item.year - rok
+
+                    @if (@item.ExtraYear())
+                    {
+                        <span>przestępny</span>
+                    }
+                    else
+                    {
+                        <span>nieprzestępny</span>
+                    }
+
+                </span>
+                <br />
+            }
+
+        </p>
+    }
+
+}

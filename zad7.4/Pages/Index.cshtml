@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="user.year"></label>
+            <input asp-for="user.year" class="form-control" />
+            <span asp-validation-for="user.year" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="user.name"></label>
+            <input asp-for="user.name" class="form-control" />
+            <span asp-validation-for="user.name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="user.lastname"></label>
+            <input asp-for="user.lastname" class="form-control" />
+            <span asp-validation-for="user.lastname" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Zatwierdź</button>
+
+    </form>
+    @if (!Model.hide)
+    {
+        <p class="alert alert-info">
+            @ViewData["user"]
+
+            @if (Model.gender)
+            {
+                <span>urodziła się</span>
+            }
+            else
+            {
+                <span>urodził się</span>
+            }
+
+            w @ViewData["extraY"] roku.
+
+
+            @if (Model.extra)
+            {
+                <span>Był to rok przestępny.</span>
+            }
+            else
+            {
+                <span>Nie był to rok przestępny.</span>
+            }
+        </p>
+
+    }
+    
+</div>

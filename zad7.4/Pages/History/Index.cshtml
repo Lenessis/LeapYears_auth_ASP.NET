@@ -1,0 +1,54 @@
+﻿@page
+@model zad7._4.Pages.History.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>History</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoryUser[0].date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoryUser[0].result)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoryUser[0].YearUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.HistoryUser) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearUser.name)
+            </td>
+            <td>
+                
+
+                @if(item.UserId != null && item.UserId == UserManager.GetUserId(User).ToString())
+                {
+                    
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                }
+
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
